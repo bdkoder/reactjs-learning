@@ -4,11 +4,12 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const userName = 'John Doe';
 
   return (
     <>
       <h1>Learning ReactJS</h1>
+      <h3>Username:- {userName}</h3>
     </>
   )
 }
