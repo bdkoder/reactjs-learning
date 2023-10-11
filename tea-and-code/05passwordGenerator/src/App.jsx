@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState, useRef } from 'react'
 
 function App() {
+  const [buttonText, setButtonText] = useState('Copy');
   const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [specialAllowed, setSpecialAllowed] = useState(false);
@@ -35,6 +36,10 @@ function App() {
     passwordRef.current?.select();
     // passwordRef.current?.setSelectionRange(0, 4);
     window.navigator.clipboard.writeText(password);
+    setButtonText('Copied!');
+    setTimeout(() => {
+      setButtonText('Copy');
+    }, 3000);
   }, [password]);
 
   useEffect(() => {
@@ -54,7 +59,9 @@ function App() {
           />
           <button 
           onClick = {copyPasswordToClipBoard}
-          className="bg-blue-700 hover:bg-gray-700 text-white px-4 py-2 focus:outline-none">Copy</button>
+          className="bg-blue-700 hover:bg-gray-700 text-white px-4 py-2 focus:outline-none">
+            {buttonText}
+          </button>
         </div>
         <div className='flex text-sm gap-x-2'>
           <div className='flex items-center gap-x-1'>
